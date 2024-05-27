@@ -14,8 +14,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import org.jetbrains.annotations.NotNull;
 
-;
-
 public class ModShieldDecoratorRecipe extends CustomRecipe {
 
     public ModShieldDecoratorRecipe(CraftingBookCategory category) {
@@ -37,7 +35,8 @@ public class ModShieldDecoratorRecipe extends CustomRecipe {
                     bannerStack = itemStack;
                 }
                 else {
-                    if (!(itemStack.is(ModItems.LEATHER_SHIELD.get())) &&
+                    if (
+                            !(itemStack.is(ModItems.LEATHER_SHIELD.get())) &&
                             !(itemStack.is(ModItems.GOLD_SHIELD.get())) &&
                             !(itemStack.is(ModItems.DIAMOND_SHIELD.get())) &&
                             !(itemStack.is(ModItems.NETHERITE_SHIELD.get())) &&
@@ -71,8 +70,8 @@ public class ModShieldDecoratorRecipe extends CustomRecipe {
                 if (itemStack.getItem() instanceof BannerItem) {
                     bannerStack = itemStack;
                 }
-                else if ((itemStack
-                        .is(ModItems.LEATHER_SHIELD.get())) ||
+                else if (
+                        (itemStack.is(ModItems.LEATHER_SHIELD.get())) ||
                         (itemStack.is(ModItems.GOLD_SHIELD.get())) ||
                         (itemStack.is(ModItems.DIAMOND_SHIELD.get())) ||
                         (itemStack.is(ModItems.NETHERITE_SHIELD.get())) ||
