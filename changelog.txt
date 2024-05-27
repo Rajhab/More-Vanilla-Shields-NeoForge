@@ -1,3 +1,4 @@
 Changelog 1.0.0-1.20.2:
 
 - Ported from [FORGE] 1.1.0-1.20.2 to [NEOFORGE] 1.0.0-1.20.2
+- Changed logo.png
