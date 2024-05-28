@@ -6,6 +6,7 @@ import com.rajhab.morevanillashields_mod.item.ModItems;
 import com.rajhab.morevanillashields_mod.util.ModRecipeSerializer;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.ModLoadingContext;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
@@ -22,9 +23,9 @@ public class morevanillashields
     public static final String MOD_ID = "morevanillashields";
     private static final Logger LOGGER = LogUtils.getLogger();
 
-    public morevanillashields(IEventBus modEventBus)
+    public morevanillashields(IEventBus modEventBus, ModContainer modContainer)
     {
-        ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER ,ShieldConfig.SPEC, "morevanillashields-server.toml");
+        modContainer.registerConfig(ModConfig.Type.SERVER ,ShieldConfig.SPEC, "morevanillashields-server.toml");
         NeoForge.EVENT_BUS.register(this);
         modEventBus.addListener(this::commonSetup);
         ModItems.register(modEventBus);
