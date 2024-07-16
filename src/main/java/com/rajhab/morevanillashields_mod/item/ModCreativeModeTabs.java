@@ -7,7 +7,6 @@ import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -21,53 +20,28 @@ public class ModCreativeModeTabs {
 
         if(pOutput.getTabKey() == CreativeModeTabs.COMBAT) {
 
-            addAfter(pOutput, Items.SHIELD, ModItems.LEATHER_SHIELD.get());
-            addAfter(pOutput, ModItems.LEATHER_SHIELD.get(), ModItems.GOLD_SHIELD.get());
-            addAfter(pOutput, ModItems.GOLD_SHIELD.get(), ModItems.DIAMOND_SHIELD.get());
-            addAfter(pOutput, ModItems.DIAMOND_SHIELD.get(), ModItems.NETHERITE_SHIELD.get());
-            addAfter(pOutput, ModItems.NETHERITE_SHIELD.get(), ModItems.EMERALD_SHIELD.get());
-            addAfter(pOutput, ModItems.EMERALD_SHIELD.get(), ModItems.AMETHYST_SHIELD.get());
-            addAfter(pOutput, ModItems.AMETHYST_SHIELD.get(), ModItems.OBSIDIAN_SHIELD.get());
-            addAfter(pOutput, ModItems.OBSIDIAN_SHIELD.get(), ModItems.COAL_SHIELD.get());
-            addAfter(pOutput, ModItems.COAL_SHIELD.get(), ModItems.END_CRYSTAL_SHIELD.get());
-            addAfter(pOutput, ModItems.END_CRYSTAL_SHIELD.get(), ModItems.GLASS_SHIELD.get());
-            addAfter(pOutput, ModItems.GLASS_SHIELD.get(), ModItems.TINTED_GLASS_SHIELD.get());
-            addAfter(pOutput, ModItems.TINTED_GLASS_SHIELD.get(), ModItems.BROWN_STAINED_GLASS_SHIELD.get());
-            addAfter(pOutput, ModItems.BROWN_STAINED_GLASS_SHIELD.get(), ModItems.BLUE_STAINED_GLASS_SHIELD.get());
-            addAfter(pOutput, ModItems.BLUE_STAINED_GLASS_SHIELD.get(), ModItems.CYAN_STAINED_GLASS_SHIELD.get());
-            addAfter(pOutput, ModItems.CYAN_STAINED_GLASS_SHIELD.get(), ModItems.LIGHT_BLUE_STAINED_GLASS_SHIELD.get());
-            addAfter(pOutput, ModItems.LIGHT_BLUE_STAINED_GLASS_SHIELD.get(), ModItems.GREEN_STAINED_GLASS_SHIELD.get());
-            addAfter(pOutput, ModItems.GREEN_STAINED_GLASS_SHIELD.get(), ModItems.YELLOW_STAINED_GLASS_SHIELD.get());
-            addAfter(pOutput, ModItems.YELLOW_STAINED_GLASS_SHIELD.get(), ModItems.PINK_STAINED_GLASS_SHIELD.get());
-            addAfter(pOutput, ModItems.PINK_STAINED_GLASS_SHIELD.get(), ModItems.ORANGE_STAINED_GLASS_SHIELD.get());
-            addAfter(pOutput, ModItems.ORANGE_STAINED_GLASS_SHIELD.get(), ModItems.RED_STAINED_GLASS_SHIELD.get());
-
-            /*pOutput.accept(ModItems.LEATHER_SHIELD);
-            pOutput.accept(ModItems.COAL_SHIELD);
-            pOutput.accept(ModItems.GOLD_SHIELD);
-            pOutput.accept(ModItems.EMERALD_SHIELD);
-            pOutput.accept(ModItems.AMETHYST_SHIELD);
-            pOutput.accept(ModItems.GLASS_SHIELD);
-            pOutput.accept(ModItems.TINTED_GLASS_SHIELD);
-            pOutput.accept(ModItems.BROWN_STAINED_GLASS_SHIELD);
-            pOutput.accept(ModItems.BLUE_STAINED_GLASS_SHIELD);
-            pOutput.accept(ModItems.CYAN_STAINED_GLASS_SHIELD);
-            pOutput.accept(ModItems.LIGHT_BLUE_STAINED_GLASS_SHIELD);
-            pOutput.accept(ModItems.GREEN_STAINED_GLASS_SHIELD);
-            pOutput.accept(ModItems.LIME_STAINED_GLASS_SHIELD);
-            pOutput.accept(ModItems.YELLOW_STAINED_GLASS_SHIELD);
-            pOutput.accept(ModItems.PINK_STAINED_GLASS_SHIELD);
-            pOutput.accept(ModItems.ORANGE_STAINED_GLASS_SHIELD);
-            pOutput.accept(ModItems.RED_STAINED_GLASS_SHIELD);
-            pOutput.accept(ModItems.DIAMOND_SHIELD);
-            pOutput.accept(ModItems.OBSIDIAN_SHIELD);
-            pOutput.accept(ModItems.NETHERITE_SHIELD);
-            pOutput.accept(ModItems.END_CRYSTAL_SHIELD); */
+            pOutput.insertAfter(new ItemStack(Items.SHIELD), new ItemStack(ModItems.LEATHER_SHIELD.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            pOutput.insertAfter(new ItemStack(ModItems.LEATHER_SHIELD.get()), new ItemStack(ModItems.GOLD_SHIELD.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            pOutput.insertAfter(new ItemStack(ModItems.GOLD_SHIELD.get()), new ItemStack(ModItems.DIAMOND_SHIELD.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            pOutput.insertAfter(new ItemStack(ModItems.DIAMOND_SHIELD.get()), new ItemStack(ModItems.NETHERITE_SHIELD.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            pOutput.insertAfter(new ItemStack(ModItems.NETHERITE_SHIELD.get()), new ItemStack(ModItems.EMERALD_SHIELD.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            pOutput.insertAfter(new ItemStack(ModItems.EMERALD_SHIELD.get()), new ItemStack(ModItems.AMETHYST_SHIELD.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            pOutput.insertAfter(new ItemStack(ModItems.AMETHYST_SHIELD.get()), new ItemStack(ModItems.REDSTONE_SHIELD.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            pOutput.insertAfter(new ItemStack(ModItems.REDSTONE_SHIELD.get()), new ItemStack(ModItems.OBSIDIAN_SHIELD.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            pOutput.insertAfter(new ItemStack(ModItems.OBSIDIAN_SHIELD.get()), new ItemStack(ModItems.COAL_SHIELD.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            pOutput.insertAfter(new ItemStack(ModItems.COAL_SHIELD.get()), new ItemStack(ModItems.END_CRYSTAL_SHIELD.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            pOutput.insertAfter(new ItemStack(ModItems.END_CRYSTAL_SHIELD.get()), new ItemStack(ModItems.GLASS_SHIELD.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            pOutput.insertAfter(new ItemStack(ModItems.GLASS_SHIELD.get()), new ItemStack(ModItems.TINTED_GLASS_SHIELD.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            pOutput.insertAfter(new ItemStack(ModItems.TINTED_GLASS_SHIELD.get()), new ItemStack(ModItems.BROWN_STAINED_GLASS_SHIELD.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            pOutput.insertAfter(new ItemStack(ModItems.BROWN_STAINED_GLASS_SHIELD.get()), new ItemStack(ModItems.BLUE_STAINED_GLASS_SHIELD.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            pOutput.insertAfter(new ItemStack(ModItems.BLUE_STAINED_GLASS_SHIELD.get()), new ItemStack(ModItems.CYAN_STAINED_GLASS_SHIELD.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            pOutput.insertAfter(new ItemStack(ModItems.CYAN_STAINED_GLASS_SHIELD.get()), new ItemStack(ModItems.LIGHT_BLUE_STAINED_GLASS_SHIELD.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            pOutput.insertAfter(new ItemStack(ModItems.LIGHT_BLUE_STAINED_GLASS_SHIELD.get()), new ItemStack(ModItems.GREEN_STAINED_GLASS_SHIELD.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            pOutput.insertAfter(new ItemStack(ModItems.GREEN_STAINED_GLASS_SHIELD.get()), new ItemStack(ModItems.YELLOW_STAINED_GLASS_SHIELD.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            pOutput.insertAfter(new ItemStack(ModItems.YELLOW_STAINED_GLASS_SHIELD.get()), new ItemStack(ModItems.PINK_STAINED_GLASS_SHIELD.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            pOutput.insertAfter(new ItemStack(ModItems.PINK_STAINED_GLASS_SHIELD.get()), new ItemStack(ModItems.ORANGE_STAINED_GLASS_SHIELD.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            pOutput.insertAfter(new ItemStack(ModItems.ORANGE_STAINED_GLASS_SHIELD.get()), new ItemStack(ModItems.RED_STAINED_GLASS_SHIELD.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
         }
-    }
-
-    private static void addAfter(BuildCreativeModeTabContentsEvent event, Item after, Item itemToAdd) {
-        event.getEntries().putAfter(new ItemStack(after), new ItemStack(itemToAdd), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
     }
 
     public static void register(IEventBus eventBus) {

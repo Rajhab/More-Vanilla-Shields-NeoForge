@@ -4,40 +4,66 @@ import com.rajhab.morevanillashields_mod.ShieldConfig;
 import com.rajhab.morevanillashields_mod.morevanillashields;
 import com.rajhab.morevanillashields_mod.util.ModShieldTileEntityRenderer;
 import net.minecraft.ChatFormatting;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.client.multiplayer.ClientLevel;
+import net.minecraft.client.particle.Particle;
+import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
-import net.minecraft.core.component.DataComponentType;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.core.component.DataComponents;
+import net.minecraft.core.particles.*;
 import net.minecraft.network.chat.Component;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.ShieldItem;
-import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.server.MinecraftServer;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.progress.ChunkProgressListener;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.Pose;
+import net.minecraft.world.item.*;
 import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.world.item.enchantment.effects.SpawnParticlesEffect;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.RedStoneOreBlock;
+import net.minecraft.world.level.block.entity.TickingBlockEntity;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.dimension.LevelStem;
+import net.minecraft.world.level.storage.LevelStorageSource;
+import net.minecraft.world.level.storage.ServerLevelData;
+import net.minecraft.world.phys.Vec3;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.client.extensions.common.IClientItemExtensions;
+import net.neoforged.neoforge.common.extensions.IItemExtension;
+import net.neoforged.neoforge.common.world.AuxiliaryLightManager;
+import net.neoforged.neoforge.event.entity.ProjectileImpactEvent;
+import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.joml.Vector3d;
 
 import java.util.List;
+import java.util.Random;
+import java.util.concurrent.Executor;
 import java.util.function.Consumer;
 
-public class ModItems extends Item.Properties{
+public class ModItems extends Item.Properties {
 
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(morevanillashields.MOD_ID);
 
-    public ModItems defaultDurability(int p_41500_) {
-        return this.component(DataComponents.MAX_DAMAGE) == 0 ? this.durability(p_41500_) : this;
+    public ModItems defaultDurability(int pDefaultDamage) {
+        return this.component() == 0 ? this.durability(pDefaultDamage) : this;
     }
 
-    private int component(DataComponentType<Integer> maxDamage) {
+    private int component() {
         return 0;
     }
 
-    public ModItems durability(int p_41504_) {
-        this.component(DataComponents.MAX_DAMAGE, p_41504_);
+    public ModItems durability(int pMaxDamage) {
+        this.component(DataComponents.MAX_DAMAGE, pMaxDamage);
         this.component(DataComponents.MAX_STACK_SIZE, 1);
         this.component(DataComponents.DAMAGE, 0);
         return this;
@@ -76,8 +102,6 @@ public class ModItems extends Item.Properties{
                     });
                 }
             });
-
-
 
     public static final DeferredItem<Item> GOLD_SHIELD = ITEMS.register("gold_shield",
             () -> new ShieldItem(new ModItems().defaultDurability(322)){
@@ -612,6 +636,73 @@ public class ModItems extends Item.Properties{
                     if (ShieldConfig.ENABLE_TOOLTIPS.get()) {
                         if (Screen.hasShiftDown()) {
                             components.add(Component.translatable("item.moditems.end_crystal_shield").append(String.valueOf(ShieldConfig.END_CRYSTAL_SHIELD_DURABILITY.get())).withStyle(ChatFormatting.DARK_AQUA));
+                        } else {
+                            components.add(Component.translatable("item.moditems.shift").withStyle(ChatFormatting.LIGHT_PURPLE));
+                        }
+
+                        super.appendHoverText(stack, level, components, flag);
+                    }
+                }
+
+                @Override
+                public void initializeClient(Consumer<IClientItemExtensions> consumer) {
+                    consumer.accept(new IClientItemExtensions() {
+                        @Override
+                        public BlockEntityWithoutLevelRenderer getCustomRenderer() {
+                            return ModShieldTileEntityRenderer.instance;
+                        }
+                    });
+                }
+
+            });
+
+    public static final DeferredItem<Item> REDSTONE_SHIELD = ITEMS.register("redstone_shield",
+            () -> new ShieldItem(new ModItems().defaultDurability(250)) {
+
+                @Override
+                public int getMaxDamage(ItemStack stack) {
+                    return ShieldConfig.REDSTONE_SHIELD_DURABILITY.get();
+                }
+
+                @Override
+                public void onUseTick(Level pLevel, LivingEntity pLivingEntity, ItemStack pStack, int pRemainingUseDuration) {
+                if(ShieldConfig.ENABLE_PARTICLES.get()) {
+
+                    float pAlpha = 1;
+                    float yaw = -pLivingEntity.getYRot();
+                    float pitch = -pLivingEntity.getXRot();
+
+                    double offsetX = 0.5 * Math.sin(Math.toRadians(yaw));
+                    double offsetY = 0.5 * Math.sin(Math.toRadians(pitch));
+                    double offsetZ = 0.5 * Math.cos(Math.toRadians(yaw));
+
+                    Vector3d offsetVector = new Vector3d(0.0, 0.0, 0.0);
+
+                    offsetVector.rotateX(-pitch * Math.PI / 180.0);
+                    offsetVector.rotateZ(-yaw * Math.PI / 180.0);
+
+                    offsetX += offsetVector.x;
+                    offsetY += offsetVector.y;
+                    offsetZ += offsetVector.z;
+
+                    Random rand = new Random();
+
+                    for (double countparticles = 0; countparticles <= ShieldConfig.REDSTONE_SHIELD_DENSITY.get(); ++countparticles) {
+                        pLevel.addParticle(new DustParticleOptions(DustParticleOptions.REDSTONE_PARTICLE_COLOR, pAlpha),
+                                (pLivingEntity.position().x + offsetX) + (rand.nextDouble() - 0.5D),
+                                (pLivingEntity.position().y + offsetY) + (rand.nextDouble() + 0.5D),
+                                (pLivingEntity.position().z + offsetZ) + (rand.nextDouble() - 0.5D),
+                                0.0, 0.0, 0.0);
+                    }
+                }
+            }
+
+                @Override
+                public void appendHoverText(ItemStack stack, TooltipContext level, List<Component> components, TooltipFlag flag) {
+
+                    if (ShieldConfig.ENABLE_TOOLTIPS.get()) {
+                        if (Screen.hasShiftDown()) {
+                            components.add(Component.translatable("item.moditems.redstone_shield").append(String.valueOf(ShieldConfig.REDSTONE_SHIELD_DURABILITY.get())).withStyle(ChatFormatting.DARK_AQUA));
                         } else {
                             components.add(Component.translatable("item.moditems.shift").withStyle(ChatFormatting.LIGHT_PURPLE));
                         }
