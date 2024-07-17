@@ -192,6 +192,8 @@
   "item.moditems.emerald_shield": "Smaragd Schild. Stabilität ist ",
   "item.moditems.amethyst_shield": "Amethyst Schild. Stabilität ist ",
   "item.moditems.redstone_shield": "Redstone Schild. Stabilität ist ",
+  "item.moditems.redstone_shield.particles_enabled": ". Partikel aktiviert",
+  "item.moditems.redstone_shield.particles_disabled": ". Partikel deaktiviert",
   "item.moditems.end_crystal_shield": "End Kristal Schild. Stabilität ist ",
   "item.moditems.obsidian_shield": "Obsidian Schild. Stabilität ist ",
   "item.moditems.coal_shield": "Kohle Schild. Stabilität ist ",

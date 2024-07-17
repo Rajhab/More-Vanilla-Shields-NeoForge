@@ -192,6 +192,8 @@
   "item.moditems.emerald_shield": "绿宝石盾牌 耐久：",
   "item.moditems.amethyst_shield": "紫水晶盾牌 耐久：",
   "item.moditems.redstone_shield": "红石盾。 ",
+  "item.moditems.redstone_shield.particles_enabled": ". 启用粒子",
+  "item.moditems.redstone_shield.particles_disabled": ". 粒子已禁用",
   "item.moditems.end_crystal_shield": "末地水晶盾牌 耐久：",
   "item.moditems.obsidian_shield": "黑曜石盾牌 耐久：",
   "item.moditems.coal_shield": "煤盾牌 耐久：",

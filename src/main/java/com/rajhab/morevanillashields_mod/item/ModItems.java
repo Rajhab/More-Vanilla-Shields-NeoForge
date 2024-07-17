@@ -701,13 +701,24 @@ public class ModItems extends Item.Properties {
                 public void appendHoverText(ItemStack stack, TooltipContext level, List<Component> components, TooltipFlag flag) {
 
                     if (ShieldConfig.ENABLE_TOOLTIPS.get()) {
-                        if (Screen.hasShiftDown()) {
-                            components.add(Component.translatable("item.moditems.redstone_shield").append(String.valueOf(ShieldConfig.REDSTONE_SHIELD_DURABILITY.get())).withStyle(ChatFormatting.DARK_AQUA));
-                        } else {
-                            components.add(Component.translatable("item.moditems.shift").withStyle(ChatFormatting.LIGHT_PURPLE));
-                        }
+                        if(ShieldConfig.ENABLE_PARTICLES.get()) {
+                            if (Screen.hasShiftDown()) {
+                                components.add(Component.translatable("item.moditems.redstone_shield").append(String.valueOf(ShieldConfig.REDSTONE_SHIELD_DURABILITY.get())).append(Component.translatable("item.moditems.redstone_shield.particles_enabled")).withStyle(ChatFormatting.DARK_AQUA));
+                            } else {
+                                components.add(Component.translatable("item.moditems.shift").withStyle(ChatFormatting.LIGHT_PURPLE));
+                            }
 
-                        super.appendHoverText(stack, level, components, flag);
+                            super.appendHoverText(stack, level, components, flag);
+                        }
+                        else {
+                            if (Screen.hasShiftDown()) {
+                                components.add(Component.translatable("item.moditems.redstone_shield").append(String.valueOf(ShieldConfig.REDSTONE_SHIELD_DURABILITY.get())).append(Component.translatable("item.moditems.redstone_shield.particles_disabled")).withStyle(ChatFormatting.DARK_AQUA));
+                            } else {
+                                components.add(Component.translatable("item.moditems.shift").withStyle(ChatFormatting.LIGHT_PURPLE));
+                            }
+
+                            super.appendHoverText(stack, level, components, flag);
+                        }
                     }
                 }
 

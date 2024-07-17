@@ -201,6 +201,8 @@
   "item.moditems.emerald_shield": "Emerald Shield. Durability is ",
   "item.moditems.amethyst_shield": "Amethyst Shield. Durability is ",
   "item.moditems.redstone_shield": "Redstone Shield. Durability is ",
+  "item.moditems.redstone_shield.particles_enabled": ". Particles enabled",
+  "item.moditems.redstone_shield.particles_disabled": ". Particles disabled",
   "item.moditems.end_crystal_shield": "End Crystal Shield. Durability is ",
   "item.moditems.obsidian_shield": "Obsidian Shield. Durability is ",
   "item.moditems.coal_shield": "Coal Shield. Durability is ",
