@@ -3,3 +3,9 @@ Changelog 1.0.0-1.20.6:
 - Ported from [FORGE] 1.0.0-1.20.6 to [NEOFORGE] 1.0.0-1.20.6
 - Changed logo.png
 - Config File working (i was crying)
+
+Changelog 1.0.1-1.20.6:
+
+- Updated to 21.6.119
+- Added Redstone Shield with Particle System
+- Added tooltip that shows if particles are enabled or disabled
