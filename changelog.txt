@@ -4,7 +4,7 @@ Changelog 1.0.0-1.21:
 
 Changelog 1.0.1-1.21:
 
-- Updated to 21.0.111-beta
-- Added Redstone Shield with Particle System (lighting needed)
+- Updated to 21.0.143
+- Added Redstone Shield with Particle System
 - Added tooltip that shows if particles are enabled or disabled
 - Fixed Creative Mode Tab
