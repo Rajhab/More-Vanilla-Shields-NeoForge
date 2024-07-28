@@ -2,10 +2,8 @@ package com.rajhab.morevanillashields_mod.item;
 
 import com.rajhab.morevanillashields_mod.ShieldConfig;
 import com.rajhab.morevanillashields_mod.morevanillashields;
-import com.rajhab.morevanillashields_mod.util.ModShieldTileEntityRenderer;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.particles.*;
 import net.minecraft.network.chat.Component;
@@ -15,7 +13,6 @@ import net.minecraft.world.item.*;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
 import net.neoforged.bus.api.IEventBus;
-import net.neoforged.neoforge.client.extensions.common.IClientItemExtensions;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import org.jetbrains.annotations.Nullable;
@@ -23,7 +20,6 @@ import org.joml.Vector3d;
 
 import java.util.List;
 import java.util.Random;
-import java.util.function.Consumer;
 
 public class ModItems extends Item.Properties {
 
@@ -66,16 +62,6 @@ public class ModItems extends Item.Properties {
                         super.appendHoverText(stack, level, components, flag);
                     }
                 }
-
-                @Override
-                public void initializeClient(Consumer<IClientItemExtensions> consumer) {
-                    consumer.accept(new IClientItemExtensions() {
-                        @Override
-                        public BlockEntityWithoutLevelRenderer getCustomRenderer() {
-                            return ModShieldTileEntityRenderer.instance;
-                        }
-                    });
-                }
             });
 
     public static final DeferredItem<Item> GOLD_SHIELD = ITEMS.register("gold_shield",
@@ -99,16 +85,6 @@ public class ModItems extends Item.Properties {
                         super.appendHoverText(stack, level, components, flag);
                     }
                 }
-
-                @Override
-                public void initializeClient(Consumer<IClientItemExtensions> consumer) {
-                    consumer.accept(new IClientItemExtensions() {
-                        @Override
-                        public BlockEntityWithoutLevelRenderer getCustomRenderer() {
-                            return ModShieldTileEntityRenderer.instance;
-                        }
-                    });
-                }
             });
 
     public static final DeferredItem<Item> DIAMOND_SHIELD = ITEMS.register("diamond_shield",
@@ -131,16 +107,6 @@ public class ModItems extends Item.Properties {
 
                         super.appendHoverText(stack, level, components, flag);
                     }
-                }
-
-                @Override
-                public void initializeClient(Consumer<IClientItemExtensions> consumer) {
-                    consumer.accept(new IClientItemExtensions() {
-                        @Override
-                        public BlockEntityWithoutLevelRenderer getCustomRenderer() {
-                            return ModShieldTileEntityRenderer.instance;
-                        }
-                    });
                 }
             });
 
@@ -441,16 +407,6 @@ public class ModItems extends Item.Properties {
                         super.appendHoverText(stack, level, components, flag);
                     }
                 }
-
-                @Override
-                public void initializeClient(Consumer<IClientItemExtensions> consumer) {
-                    consumer.accept(new IClientItemExtensions() {
-                        @Override
-                        public BlockEntityWithoutLevelRenderer getCustomRenderer() {
-                            return ModShieldTileEntityRenderer.instance;
-                        }
-                    });
-                }
             });
 
     public static final DeferredItem<Item> EMERALD_SHIELD = ITEMS.register("emerald_shield",
@@ -476,16 +432,6 @@ public class ModItems extends Item.Properties {
                         super.appendHoverText(stack, level, components, flag);
                     }
                 }
-
-                @Override
-                public void initializeClient(Consumer<IClientItemExtensions> consumer) {
-                    consumer.accept(new IClientItemExtensions() {
-                        @Override
-                        public BlockEntityWithoutLevelRenderer getCustomRenderer() {
-                            return ModShieldTileEntityRenderer.instance;
-                        }
-                    });
-                }
             });
 
     public static final DeferredItem<Item> AMETHYST_SHIELD = ITEMS.register("amethyst_shield",
@@ -509,16 +455,6 @@ public class ModItems extends Item.Properties {
                         super.appendHoverText(stack, level, components, flag);
                     }
                 }
-
-                @Override
-                public void initializeClient(Consumer<IClientItemExtensions> consumer) {
-                    consumer.accept(new IClientItemExtensions() {
-                        @Override
-                        public BlockEntityWithoutLevelRenderer getCustomRenderer() {
-                            return ModShieldTileEntityRenderer.instance;
-                        }
-                    });
-                }
             });
 
     public static final DeferredItem<Item> OBSIDIAN_SHIELD = ITEMS.register("obsidian_shield",
@@ -541,16 +477,6 @@ public class ModItems extends Item.Properties {
 
                         super.appendHoverText(stack, level, components, flag);
                     }
-                }
-
-                @Override
-                public void initializeClient(Consumer<IClientItemExtensions> consumer) {
-                    consumer.accept(new IClientItemExtensions() {
-                        @Override
-                        public BlockEntityWithoutLevelRenderer getCustomRenderer() {
-                            return ModShieldTileEntityRenderer.instance;
-                        }
-                    });
                 }
             });
 
@@ -580,16 +506,6 @@ public class ModItems extends Item.Properties {
                         super.appendHoverText(stack, level, components, flag);
                     }
                 }
-
-                @Override
-                public void initializeClient(Consumer<IClientItemExtensions> consumer) {
-                    consumer.accept(new IClientItemExtensions() {
-                        @Override
-                        public BlockEntityWithoutLevelRenderer getCustomRenderer() {
-                            return ModShieldTileEntityRenderer.instance;
-                        }
-                    });
-                }
             });
 
     public static final DeferredItem<Item> END_CRYSTAL_SHIELD = ITEMS.register("end_crystal_shield",
@@ -618,17 +534,6 @@ public class ModItems extends Item.Properties {
                         super.appendHoverText(stack, level, components, flag);
                     }
                 }
-
-                @Override
-                public void initializeClient(Consumer<IClientItemExtensions> consumer) {
-                    consumer.accept(new IClientItemExtensions() {
-                        @Override
-                        public BlockEntityWithoutLevelRenderer getCustomRenderer() {
-                            return ModShieldTileEntityRenderer.instance;
-                        }
-                    });
-                }
-
             });
 
     public static final DeferredItem<Item> REDSTONE_SHIELD = ITEMS.register("redstone_shield",
@@ -715,17 +620,6 @@ public class ModItems extends Item.Properties {
                         }
                     }
                 }
-
-                @Override
-                public void initializeClient(Consumer<IClientItemExtensions> consumer) {
-                    consumer.accept(new IClientItemExtensions() {
-                        @Override
-                        public BlockEntityWithoutLevelRenderer getCustomRenderer() {
-                            return ModShieldTileEntityRenderer.instance;
-                        }
-                    });
-                }
-
             });
 
     public static void register(IEventBus eventBus) {

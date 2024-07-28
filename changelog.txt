@@ -8,3 +8,4 @@ Changelog 1.0.1-1.21:
 - Added Redstone Shield with Particle System
 - Added tooltip that shows if particles are enabled or disabled
 - Fixed Creative Mode Tab
+- Used new RegisterClientExtensionsEvent instead of deprecated initializeClient
