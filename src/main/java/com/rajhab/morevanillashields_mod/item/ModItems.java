@@ -48,6 +48,7 @@ public class ModItems extends Item.Properties{
         return this;
     }
 
+
     //Shield
     public static final DeferredItem<Item> LEATHER_SHIELD = ITEMS.register("leather_shield",
             () -> new ShieldItem(new ModItems().defaultDurability(196)){
