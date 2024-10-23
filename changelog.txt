@@ -1,3 +1,12 @@
 Changelog 1.0.0-1.21.1:
 
 - Ported from 1.0.2-1.21 [NEOFORGE] to 1.0.0-1.21.1 [NEOFORGE]
+
+Changelog 1.0.1-1.21.1:
+
+- Updated to 21.1.72
+- Fixed Compatibility with older forge versions
+- Fixed Redstone Shield Particle Density
+- Fixed typo in german translation
+- Made the End Crystal Shield explosive (turned on by default. To disable go into config)
+- Made End Crystal Shield Explosion serversided
