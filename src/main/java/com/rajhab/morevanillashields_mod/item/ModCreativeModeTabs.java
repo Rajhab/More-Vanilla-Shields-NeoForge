@@ -27,8 +27,10 @@ public class ModCreativeModeTabs {
             pOutput.insertAfter(new ItemStack(ModItems.NETHERITE_SHIELD.get()), new ItemStack(ModItems.EMERALD_SHIELD.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             pOutput.insertAfter(new ItemStack(ModItems.EMERALD_SHIELD.get()), new ItemStack(ModItems.AMETHYST_SHIELD.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             pOutput.insertAfter(new ItemStack(ModItems.AMETHYST_SHIELD.get()), new ItemStack(ModItems.REDSTONE_SHIELD.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
-            pOutput.insertAfter(new ItemStack(ModItems.REDSTONE_SHIELD.get()), new ItemStack(ModItems.OBSIDIAN_SHIELD.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
-            pOutput.insertAfter(new ItemStack(ModItems.OBSIDIAN_SHIELD.get()), new ItemStack(ModItems.COAL_SHIELD.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            pOutput.insertAfter(new ItemStack(ModItems.REDSTONE_SHIELD.get()), new ItemStack(ModItems.COPPER_SHIELD.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            pOutput.insertAfter(new ItemStack(ModItems.COPPER_SHIELD.get()), new ItemStack(ModItems.OBSIDIAN_SHIELD.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            pOutput.insertAfter(new ItemStack(ModItems.OBSIDIAN_SHIELD.get()), new ItemStack(ModItems.MAGMA_SHIELD.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            pOutput.insertAfter(new ItemStack(ModItems.MAGMA_SHIELD.get()), new ItemStack(ModItems.COAL_SHIELD.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             pOutput.insertAfter(new ItemStack(ModItems.COAL_SHIELD.get()), new ItemStack(ModItems.END_CRYSTAL_SHIELD.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             pOutput.insertAfter(new ItemStack(ModItems.END_CRYSTAL_SHIELD.get()), new ItemStack(ModItems.GLASS_SHIELD.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             pOutput.insertAfter(new ItemStack(ModItems.GLASS_SHIELD.get()), new ItemStack(ModItems.TINTED_GLASS_SHIELD.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);

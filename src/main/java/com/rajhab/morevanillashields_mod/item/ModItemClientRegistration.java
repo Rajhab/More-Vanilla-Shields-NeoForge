@@ -15,11 +15,11 @@ public class ModItemClientRegistration {
     @SubscribeEvent
     static void onRegisterClientExtensions(RegisterClientExtensionsEvent event) {
         event.registerItem(new IClientItemExtensions() {
-            @Override
-            public BlockEntityWithoutLevelRenderer getCustomRenderer() {
-                return ModShieldTileEntityRenderer.instance;
-            }
-        },
+                               @Override
+                               public BlockEntityWithoutLevelRenderer getCustomRenderer() {
+                                   return ModShieldTileEntityRenderer.instance;
+                               }
+                           },
                 ModItems.LEATHER_SHIELD.get(),
                 ModItems.GOLD_SHIELD.get(),
                 ModItems.DIAMOND_SHIELD.get(),
@@ -27,6 +27,8 @@ public class ModItemClientRegistration {
                 ModItems.EMERALD_SHIELD.get(),
                 ModItems.AMETHYST_SHIELD.get(),
                 ModItems.REDSTONE_SHIELD.get(),
+                ModItems.COPPER_SHIELD.get(),
+                ModItems.MAGMA_SHIELD.get(),
                 ModItems.OBSIDIAN_SHIELD.get(),
                 ModItems.COAL_SHIELD.get(),
                 ModItems.END_CRYSTAL_SHIELD.get()
