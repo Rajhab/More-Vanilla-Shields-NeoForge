@@ -11,7 +11,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.neoforge.event.entity.living.ArmorHurtEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 
 import java.util.Random;
@@ -52,9 +51,31 @@ public class ShieldEventHandler {
                             Level pLevel = livingEntity.getCommandSenderWorld();
                             EquipmentSlot handSlot = livingEntity.getUsedItemHand() == InteractionHand.MAIN_HAND ? EquipmentSlot.MAINHAND : EquipmentSlot.OFFHAND;
 
-                            shield.hurtAndBreak(175, ((ServerLevel) pLevel), ((ServerPlayer) livingEntity),
+                            shield.hurtAndBreak(65, ((ServerLevel) pLevel), ((ServerPlayer) livingEntity),
                                     item -> livingEntity.onEquippedItemBroken(item, handSlot)
                             );
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    @SubscribeEvent
+    public static void onPlayerHurtWithMagmaShield(LivingDamageEvent.Post event) {
+
+        if (ShieldConfig.ENABLE_MAGMA_BURN.get()) {
+
+            if (event.getEntity() instanceof LivingEntity) {
+                LivingEntity livingEntity = event.getEntity();
+
+                if (!livingEntity.getCommandSenderWorld().isClientSide && livingEntity.isBlocking()) {
+                    ItemStack shield = livingEntity.getUseItem();
+
+                    if (shield.getItem() == ModItems.MAGMA_SHIELD.get()) {
+                        if (event.getSource().getEntity() instanceof LivingEntity attacker) {
+                            attacker.isOnFire(); // Set attacker on fire for 5 seconds
+                            attacker.setRemainingFireTicks(100); // Set attacker on fire for 5 seconds
                         }
                     }
                 }
