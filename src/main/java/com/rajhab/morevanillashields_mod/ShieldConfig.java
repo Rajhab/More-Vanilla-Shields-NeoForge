@@ -33,6 +33,8 @@ public class ShieldConfig {
     public static final ModConfigSpec.ConfigValue<Integer> REDSTONE_SHIELD_DENSITY;
     public static final ModConfigSpec.ConfigValue<Boolean> ENABLE_EXPLOSION;
     public static final ModConfigSpec.ConfigValue<Boolean> EXPLOSION_DESTROY_BLOCKS;
+    public static final ModConfigSpec.ConfigValue<Integer> MAGMA_SHIELD_DENSITY;
+    public static final ModConfigSpec.ConfigValue<Boolean> ENABLE_MAGMA_BURN;
 
     static {
         BUILDER.push("Config for More Vanilla Shields!");
@@ -43,12 +45,16 @@ public class ShieldConfig {
                 .define("enableTooltips", true);
         ENABLE_PARTICLES = BUILDER.comment("If you want particles to be enabled then let it on true")
                 .define("enableParticles", true);
+        ENABLE_MAGMA_BURN = BUILDER.comment("If you want enemies to burn when they hit the magma shield, then put it on true")
+                .define("enableMagmaBurn", true);
         ENABLE_EXPLOSION = BUILDER.comment("If you want explosions to be enabled, then put it on true")
                 .define("enableExplosion", true);
         EXPLOSION_DESTROY_BLOCKS = BUILDER.comment("If you want blocks to be destroyed when the end crystal shield explodes, then put it on true")
                 .define("explosionDestroyBlocks", false);
         REDSTONE_SHIELD_DENSITY = BUILDER.comment("Here you can set up the density of the redstone shield. (2500 as max bcs some of yall try to crash some games)")
                 .defineInRange("redstoneShieldDensity", 1, 1, 2500);
+        MAGMA_SHIELD_DENSITY = BUILDER.comment("Here you can set up the density of the redstone shield. (2500 as max bcs some of yall try to crash some games)")
+                .defineInRange("magmaShieldDensity", 1, 1, 2500);
         LEATHER_SHIELD_DURABILITY = BUILDER.comment("Durability of Leather Shield. Default Durability is 196")
                 .define("leatherShieldDurability", 196);
         GOLD_SHIELD_DURABILITY = BUILDER.comment("Durability of Gold Shield. Default Durability is 322")
