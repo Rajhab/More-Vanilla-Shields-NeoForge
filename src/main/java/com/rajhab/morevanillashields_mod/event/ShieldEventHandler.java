@@ -49,7 +49,7 @@ public class ShieldEventHandler {
                                     explosionType                   // Does or does not destroy blocks
                             );
 
-                            shield.hurtAndBreak(175, ((ServerPlayer) livingEntity), (entity) -> {
+                            shield.hurtAndBreak(65, ((ServerPlayer) livingEntity), (entity) -> {
                                 entity.broadcastBreakEvent(livingEntity.getUsedItemHand());
                             });
                         }
